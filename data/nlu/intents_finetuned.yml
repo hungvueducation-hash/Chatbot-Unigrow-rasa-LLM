@@ -1,0 +1,185 @@
+version: "3.1"
+
+nlu:
+# ============ EXPANDED GREETINGS ============
+- intent: greet
+  examples: |
+    - xin chào
+    - chào bạn
+    - hi
+    - hello
+    - xin chào hôm nay thế nào
+    - tôi muốn nói chuyện
+    - bắt đầu trò chuyện
+    - chào
+    - hey
+    - ừ chào
+    - tôi muốn hỏi
+    - có ai không
+    - xin hỗ trợ
+    - em cần tư vấn
+    - tôi cần giúp đỡ
+
+- intent: goodbye
+  examples: |
+    - tạm biệt
+    - bye
+    - goodbye
+    - thôi nha
+    - tắt đi
+    - dừng chat
+    - không cần gì nữa
+    - thanks bye
+    - tạm ngừng
+    - see you
+    - bye bye
+    - đi rồi
+
+- intent: thanks
+  examples: |
+    - thanks
+    - cảm ơn
+    - cảm ơn bạn
+    - thank you
+    - thanks a lot
+    - cảm ơn rất nhiều
+    - tôi biết rồi
+    - ok thanks
+
+# ============ PRODUCT INFO (EXPANDED) ============
+- intent: ask_unigrow_info
+  examples: |
+    - Unigrow là gì
+    - Unigrow là sản phẩm gì
+    - Unigrow có tốt không
+    - Unigrow có hiệu quả không
+    - giới thiệu về Unigrow
+    - Unigrow hoạt động như thế nào
+    - Unigrow là viên gì
+    - cơ chế hoạt động của Unigrow
+    - Unigrow thành phần gì
+    - ingredients của Unigrow
+    - Unigrow có những gì
+    - Unigrow bao gồm thành phần nào
+    - Unigrow khác với sản phẩm khác ở điểm nào
+
+- intent: ask_ingredients
+  examples: |
+    - Unigrow chứa những gì
+    - thành phần Unigrow là gì
+    - Unigrow có những nguyên liệu nào
+    - công thức Unigrow
+    - Unigrow có canxi không
+    - Unigrow có vitamin gì
+    - Unigrow có bao nhiêu canxi
+    - thành phần chính của Unigrow
+
+- intent: ask_age_group
+  examples: |
+    - Unigrow dành cho tuổi nào
+    - ai có thể dùng Unigrow
+    - Unigrow dùng từ mấy tuổi
+    - bao nhiêu tuổi mới dùng được Unigrow
+    - Unigrow có phù hợp cho tôi không (20 tuổi)
+    - người trên 25 có dùng được không
+    - Unigrow an toàn cho trẻ em không
+
+# ============ DOSAGE (EXPANDED) ============
+- intent: ask_dosage
+  examples: |
+    - dùng bao nhiêu viên một ngày
+    - cách uống Unigrow
+    - liều dùng Unigrow
+    - uống lúc nào tốt nhất
+    - uống trước hay sau ăn
+    - dùng lâu dài có được không
+    - bao lâu uống 1 lần
+    - nên uống khi nào
+    - cách dùng sao cho hiệu quả
+    - tôi nên dùng Unigrow như thế nào
+    - uống cùng lúc hay tách riêng
+
+# ============ RESULTS (EXPANDED) ============
+- intent: ask_results
+  examples: |
+    - bao lâu thấy hiệu quả
+    - mấy tháng thấy kết quả
+    - có chắc chắn phát triển không
+    - tôi bao nhiêu tuổi còn phát triển được
+    - dùng bao lâu mới thấy kết quả
+    - hiệu quả của Unigrow
+    - tôi 20 tuổi còn tăng được không
+    - tăng bao nhiêu cm
+    - có thể tăng chiều cao không
+    - Unigrow giúp tăng mấy cm
+
+# ============ SAFETY & SIDE EFFECTS (EXPANDED) ============
+- intent: ask_safety
+  examples: |
+    - Unigrow có tác dụng phụ không
+    - có an toàn không
+    - Unigrow có nguy hiểm không
+    - ai không nên dùng Unigrow
+    - Unigrow có gây hại không
+    - phụ nữ mang thai có dùng được không
+    - trẻ em có dùng được không
+    - có cần tư vấn bác sĩ không
+    - Unigrow có ảnh hưởng đến gan thận không
+
+# ============ PRICING (EXPANDED) ============
+- intent: ask_price
+  examples: |
+    - Unigrow bao nhiêu tiền
+    - giá của Unigrow là bao nhiêu
+    - mua Unigrow bao nhiêu
+    - có khuyến mãi không
+    - mua nhiều có rẻ không
+    - giá mua 1 hộp vs 3 hộp
+    - Unigrow giá bao nhiêu
+    - gói rẻ nhất là gói nào
+    - gói nào có lợi nhất
+
+# ============ PURCHASE (EXPANDED) ============
+- intent: ask_purchase
+  examples: |
+    - tôi muốn mua Unigrow
+    - làm sao để mua
+    - bán ở đâu
+    - có trực tuyến không
+    - giao hàng như thế nào
+    - mua hôm nay giao khi nào
+    - tôi muốn đặt hàng
+    - cách mua Unigrow
+    - mua ở shopee được không
+    - mua trên website như thế nào
+
+- intent: ask_guarantee
+  examples: |
+    - có bảo hành không
+    - nếu không hài lòng có hoàn tiền không
+    - bảo hành bao lâu
+    - chính sách hoàn trả
+    - có bảo đảm chất lượng không
+
+# ============ LIFESTYLE (NEW) ============
+- intent: ask_lifestyle_tips
+  examples: |
+    - cách tăng chiều cao hiệu quả
+    - nên ăn gì để cao hơn
+    - nên tập gì để cao hơn
+    - ngủ có liên quan đến chiều cao không
+    - nên uống sữa loại nào
+    - cách hỗ trợ phát triển chiều cao
+    - bơi có giúp tăng chiều cao không
+    - dinh dưỡng có quan trọng không
+    - sleep và chiều cao
+
+# ============ HEALTH CONDITIONS (NEW) ============
+- intent: ask_health_conditions
+  examples: |
+    - tôi bệnh thận có dùng được không
+    - tôi đang dùng thuốc có ảnh hưởng không
+    - tôi bị dị ứng có dùng được không
+    - người mang thai có dùng được không
+    - người cho con bú có dùng được không
+    - tôi có bệnh nền có dùng được không
