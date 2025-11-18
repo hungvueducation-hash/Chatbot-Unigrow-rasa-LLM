@@ -1,4 +1,4 @@
-<!-- File: index.html -->
+<!-- File: index.html - Cập nhật với Đăng Nhập -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +28,10 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             height: 700px;
-            overflow: hidden;
         }
         
         .header {
@@ -39,7 +39,6 @@
             color: white;
             padding: 20px;
             text-align: center;
-            border-radius: 12px 12px 0 0;
         }
         
         .header h1 {
@@ -50,6 +49,136 @@
         .header p {
             font-size: 14px;
             opacity: 0.9;
+        }
+        
+        .logout-btn {
+            float: right;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* LOGIN FORM */
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 40px;
+        }
+        
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .form-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .btn-login {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-login:hover {
+            background: #5568d3;
+        }
+        
+        .btn-register {
+            background: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-register:hover {
+            background: #e0e0e0;
+        }
+        
+        .form-message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        
+        /* CHAT INTERFACE */
+        .chat-container {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .chat-container.active {
+            display: flex;
         }
         
         .chat-messages {
@@ -80,10 +209,6 @@
         
         .message.user {
             justify-content: flex-end;
-        }
-        
-        .message.bot {
-            justify-content: flex-start;
         }
         
         .message-content {
@@ -158,10 +283,6 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
         
-        #sendBtn:active {
-            transform: translateY(0);
-        }
-        
         #sendBtn:disabled {
             background: #ccc;
             cursor: not-allowed;
@@ -195,86 +316,197 @@
             gap: 4px;
             padding: 12px 16px;
         }
-        
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 15px;
-            background: #f0f0f0;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #666;
-            margin-top: 10px;
-        }
-        
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #28a745;
-            display: inline-block;
-            margin-right: 5px;
-        }
-        
-        .error-message {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 4px solid #f5c6cb;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🤖 Unigrow AI Chatbot</h1>
-            <p>Chat about height growth and our Unigrow product</p>
-        </div>
-        
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
-                <div class="message-content">
-                    👋 Hello! I'm Unigrow Assistant. How can I help you today?
+        <!-- LOGIN SCREEN -->
+        <div id="loginScreen" class="login-container">
+            <div class="login-form">
+                <h2>🤖 Đăng Nhập Chatbot</h2>
+                
+                <div id="loginTab">
+                    <div class="form-group">
+                        <label for="loginUsername">Tên đăng nhập</label>
+                        <input type="text" id="loginUsername" placeholder="Nhập tên">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Mật khẩu</label>
+                        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu">
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button class="btn-login" onclick="doLogin()">Đăng Nhập</button>
+                        <button class="btn-register" onclick="switchToRegister()">Đăng Ký</button>
+                    </div>
                 </div>
+                
+                <div id="registerTab" style="display:none;">
+                    <div class="form-group">
+                        <label for="regUsername">Tên đăng nhập</label>
+                        <input type="text" id="regUsername" placeholder="Nhập tên">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" placeholder="Nhập email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="regPassword">Mật khẩu</label>
+                        <input type="password" id="regPassword" placeholder="Nhập mật khẩu">
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button class="btn-login" onclick="doRegister()">Đăng Ký</button>
+                        <button class="btn-register" onclick="switchToLogin()">Quay Lại</button>
+                    </div>
+                </div>
+                
+                <div id="formMessage" class="form-message"></div>
             </div>
         </div>
         
-        <div class="input-area">
-            <input 
-                type="text" 
-                id="messageInput" 
-                placeholder="Type your message..."
-                onkeypress="handleKeyPress(event)"
-                autocomplete="off"
-            >
-            <button id="sendBtn" onclick="sendMessage()">
-                <span id="sendBtnText">Send</span>
-            </button>
+        <!-- CHAT SCREEN -->
+        <div id="chatScreen" class="chat-container">
+            <div class="header">
+                <button class="logout-btn" onclick="doLogout()">Đăng Xuất</button>
+                <h1>🤖 Unigrow AI Chatbot</h1>
+                <p>Chat về phát triển chiều cao và sản phẩm Unigrow</p>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-content">
+                        👋 Xin chào! Tôi là Unigrow Assistant. Hôm nay tôi có thể giúp bạn gì?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Nhập tin nhắn..."
+                    onkeypress="handleKeyPress(event)"
+                    autocomplete="off"
+                >
+                <button id="sendBtn" onclick="sendMessage()">Gửi</button>
+            </div>
         </div>
     </div>
     
     <script>
         const API_BASE = 'http://localhost:5000';
+        let currentUserId = null;
         let isLoading = false;
         
-        // Display initial status
-        window.addEventListener('load', () => {
-            checkBotStatus();
-        });
+        // ==================== ĐĂNG NHẬP / ĐĂNG KÝ ====================
         
-        async function checkBotStatus() {
+        function switchToRegister() {
+            document.getElementById('loginTab').style.display = 'none';
+            document.getElementById('registerTab').style.display = 'block';
+            clearMessage();
+        }
+        
+        function switchToLogin() {
+            document.getElementById('loginTab').style.display = 'block';
+            document.getElementById('registerTab').style.display = 'none';
+            clearMessage();
+        }
+        
+        function showMessage(text, type) {
+            const msg = document.getElementById('formMessage');
+            msg.textContent = text;
+            msg.className = `form-message ${type}`;
+        }
+        
+        function clearMessage() {
+            document.getElementById('formMessage').className = 'form-message';
+        }
+        
+        async function doLogin() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!username || !password) {
+                showMessage('❌ Vui lòng nhập tên đăng nhập và mật khẩu', 'error');
+                return;
+            }
+            
             try {
-                const response = await fetch(`${API_BASE}/api/status`);
-                if (!response.ok) {
-                    addSystemMessage('❌ Bot is not responding. Make sure the server is running.');
+                const response = await fetch(`${API_BASE}/api/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    currentUserId = data.user_id;
+                    showChatScreen();
+                } else {
+                    showMessage(`❌ ${data.error}`, 'error');
                 }
             } catch (error) {
-                addSystemMessage('❌ Cannot connect to bot server. Is it running on http://localhost:5000?');
+                showMessage(`❌ Lỗi kết nối: ${error.message}`, 'error');
             }
         }
+        
+        async function doRegister() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            
+            if (!username || !email || !password) {
+                showMessage('❌ Vui lòng điền đầy đủ thông tin', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showMessage('✅ Đăng ký thành công! Hãy đăng nhập', 'success');
+                    setTimeout(() => switchToLogin(), 1500);
+                } else {
+                    showMessage(`❌ ${data.error}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`❌ Lỗi kết nối: ${error.message}`, 'error');
+            }
+        }
+        
+        function showChatScreen() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('chatScreen').classList.add('active');
+            document.getElementById('messageInput').focus();
+        }
+        
+        function doLogout() {
+            currentUserId = null;
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('chatScreen').classList.remove('active');
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="message bot">
+                    <div class="message-content">
+                        👋 Xin chào! Tôi là Unigrow Assistant. Hôm nay tôi có thể giúp bạn gì?
+                    </div>
+                </div>
+            `;
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+        
+        // ==================== CHAT ====================
         
         async function sendMessage() {
             const input = document.getElementById('messageInput');
@@ -282,51 +514,39 @@
             
             if (!message || isLoading) return;
             
-            // Display user message
             displayMessage(message, 'user');
             input.value = '';
             input.focus();
             
-            // Show typing indicator
             showTypingIndicator();
             isLoading = true;
             document.getElementById('sendBtn').disabled = true;
-            document.getElementById('sendBtnText').textContent = 'Sending...';
             
             try {
-                // Call API
                 const response = await fetch(`${API_BASE}/api/chat`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ message: message })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        user_id: currentUserId,
+                        message: message
+                    })
                 });
                 
-                // Remove typing indicator
                 removeTypingIndicator();
-                
-                if (!response.ok) {
-                    const error = await response.json();
-                    displayMessage('❌ Error: ' + (error.error || 'Unknown error'), 'bot');
-                    return;
-                }
                 
                 const data = await response.json();
                 
                 if (data.success) {
-                    // Display bot response
                     displayMessage(data.bot_response, 'bot');
                 } else {
-                    displayMessage('❌ ' + (data.error || 'Unknown error'), 'bot');
+                    displayMessage(`❌ ${data.error}`, 'bot');
                 }
             } catch (error) {
                 removeTypingIndicator();
-                displayMessage('❌ Connection error: ' + error.message, 'bot');
+                displayMessage(`❌ Lỗi: ${error.message}`, 'bot');
             } finally {
                 isLoading = false;
                 document.getElementById('sendBtn').disabled = false;
-                document.getElementById('sendBtnText').textContent = 'Send';
             }
         }
         
@@ -341,8 +561,6 @@
             
             messageDiv.appendChild(contentDiv);
             chatMessages.appendChild(messageDiv);
-            
-            // Auto scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
@@ -371,36 +589,10 @@
             }
         }
         
-        function addSystemMessage(text) {
-            const chatMessages = document.getElementById('chatMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message system';
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'message-content';
-            contentDiv.textContent = text;
-            
-            messageDiv.appendChild(contentDiv);
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        
         function handleKeyPress(event) {
             if (event.key === 'Enter' && !isLoading) {
                 sendMessage();
             }
-        }
-        
-        // Optional: Add some example intents
-        function showExamples() {
-            const examples = [
-                'What is Unigrow?',
-                'How much does it cost?',
-                'When will I see results?',
-                'Are there side effects?'
-            ];
-            
-            console.log('Example questions you can ask:', examples);
         }
     </script>
 </body>
