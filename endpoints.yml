@@ -1,0 +1,11 @@
+# Action endpoint - chỉ đến action server
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+
+# Tracker store - lưu conversation history
+tracker_store:
+  type: InMemoryTrackerStore
+
+# Event broker - publish events
+event_broker:
+  type: InMemoryEventBroker

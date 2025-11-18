@@ -1,0 +1,47 @@
+version: "3.1"
+
+rules:
+  - rule: activate greet action
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: activate goodbye action
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: respond to thanks
+    steps:
+      - intent: thanks
+      - action: utter_thanks
+
+  - rule: ask about bot
+    steps:
+      - intent: ask_about_me
+      - action: utter_greet
+
+  - rule: ask Unigrow info
+    steps:
+      - intent: ask_unigrow_info
+      - action: utter_unigrow_overview
+
+  - rule: ask dosage
+    steps:
+      - intent: ask_dosage
+      - action: utter_dosage_info
+
+  - rule: ask results
+    steps:
+      - intent: ask_results
+      - action: utter_results_timeline
+
+  - rule: ask price
+    steps:
+      - intent: ask_price
+      - action: utter_price_info
+
+  - rule: ask purchase
+    steps:
+      - intent: ask_purchase
+      - action: utter_purchase_process

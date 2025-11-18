@@ -1,0 +1,39 @@
+version: "3.1"
+
+stories:
+- story: greeting and ask about Unigrow
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: ask_unigrow_info
+    - action: utter_unigrow_overview
+    - intent: ask_dosage
+    - action: utter_dosage_info
+
+- story: ask about results
+  steps:
+    - intent: ask_results
+    - action: utter_results_timeline
+    - intent: ask_purchase
+    - action: utter_purchase_process
+
+- story: height problem and Unigrow solution
+  steps:
+    - intent: ask_height_problem
+    - action: utter_ask_height_details
+    - intent: ask_unigrow_info
+    - action: utter_unigrow_overview
+    - intent: affirm
+    - action: utter_purchase_offer
+
+- story: price inquiry
+  steps:
+    - intent: ask_price
+    - action: utter_price_info
+    - intent: affirm
+    - action: utter_purchase_process
+
+- story: goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye

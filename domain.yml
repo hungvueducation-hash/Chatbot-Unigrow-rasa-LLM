@@ -1,0 +1,99 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - ask_height_problem
+  - ask_unigrow_info
+  - ask_dosage
+  - ask_results
+  - ask_price
+  - ask_purchase
+  - ask_guarantee
+  - ask_about_me
+  - thanks
+
+entities:
+  - age
+  - current_height
+  - target_height
+
+slots:
+  user_age:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: age
+        intent:
+          - ask_height_problem
+          - ask_unigrow_info
+
+  user_height:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: current_height
+
+  target_height:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: target_height
+
+responses:
+  utter_greet:
+    - text: "Xin chào! 👋 Mình là Unigrow Bot, hỗ trợ bạn về vấn đề chiều cao và sản phẩm Unigrow. Hôm nay tôi có thể giúp gì cho bạn?"
+
+  utter_goodbye:
+    - text: "Cảm ơn bạn đã nhắn tin! Chúc bạn sớm đạt được chiều cao mong muốn. 😊 Nếu có câu hỏi khác, cứ nhắn tôi nhé!"
+
+  utter_ask_height_details:
+    - text: "Mình hiểu bạn muốn cao hơn. Có thể cho mình biết bạn bao nhiêu tuổi và chiều cao hiện tại không?"
+
+  utter_unigrow_overview:
+    - text: |
+        Unigrow là viên hỗ trợ phát triển chiều cao tự nhiên với thành phần:
+        • Canxi & Vitamin D3: Hỗ trợ xương
+        • Zinc & Arginine: Tăng hormone tăng trưởng
+        • L-Lysine: Tăng hấp thụ Canxi
+        
+        Unigrow không phải thuốc, mà là hỗ trợ kết hợp với dinh dưỡng, tập luyện và ngủ đủ sẽ hiệu quả tốt hơn. 
+        Tuổi dùng: 8-30 tuổi 💪
+
+  utter_dosage_info:
+    - text: "Dùng **2 viên/ngày**, uống sau ăn với nước ấm. Tốt nhất vào buổi sáng và tối để hấp thụ tốt nhất."
+
+  utter_results_timeline:
+    - text: "Thường thấy hiệu quả sau **3-6 tháng** sử dụng liên tục. Tuỳ tuổi, dinh dưỡng, giấc ngủ và tập luyện thì thời gian có thể khác nhau. Bạn cần kiên trì nhé!"
+
+  utter_price_info:
+    - text: "Unigrow hiện có các gói:\n• 1 hộp (30 viên): 299.000đ\n• 3 hộp: 799.000đ (tiết kiệm 100k)\n• 6 hộp: 1.499.000đ (tiết kiệm 300k)"
+
+  utter_purchase_process:
+    - text: "Bạn có thể mua Unigrow qua:\n1. **Website**: unigrow.vn\n2. **Shopee/Lazada**: Tìm 'Unigrow'\n3. **Hotline**: 1900.XXXX\n\nGiao hàng trong 24h tại TP HCM, 2-3 ngày toàn quốc."
+
+  utter_purchase_offer:
+    - text: "Bạn có muốn mua Unigrow để bắt đầu hỗ trợ phát triển chiều cao không? 😊"
+
+  utter_thanks:
+    - text: "Không có gì! Tôi luôn sẵn sàng giúp bạn. 💙"
+
+  utter_default_fallback:
+    - text: "Xin lỗi, mình không hiểu câu hỏi của bạn. Bạn có thể hỏi về:\n• Chiều cao & cách phát triển\n• Unigrow & cách dùng\n• Giá cả & mua hàng\nVui lòng nhắn lại với cách hỏi khác nhé! 😊"
+
+actions:
+  - action_listen
+  - action_query_llm_fallback
+  - action_query_llm_advanced
+  - action_get_user_age
+  - action_store_height_info
+  - action_default_fallback
+  - action_extract_age_entity
+  - action_validate_height
+  - action_confirm_purchase_intent
+  - action_provide_pricing_options
+  - action_get_product_recommendation
+  - action_summarize_conversation
+

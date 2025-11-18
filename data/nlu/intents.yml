@@ -1,0 +1,147 @@
+version: "3.1"
+
+nlu:
+# ============ GREETING INTENTS ============
+- intent: greet
+  examples: |
+    - xin chào
+    - chào bạn
+    - hi
+    - hello
+    - xin chào hôm nay thế nào
+    - tôi muốn nói chuyện
+    - bắt đầu trò chuyện
+    - chào
+    - hey
+    - ừ chào
+
+- intent: goodbye
+  examples: |
+    - tạm biệt
+    - bye
+    - goodbye
+    - thôi nha
+    - tắt đi
+    - dừng chat
+    - không cần gì nữa
+    - thanks bye
+    - tạm ngừng
+
+- intent: thanks
+  examples: |
+    - thanks
+    - cảm ơn
+    - cảm ơn bạn
+    - thank you
+    - thanks a lot
+
+- intent: affirm
+  examples: |
+    - yes
+    - ok
+    - được
+    - đồng ý
+    - ừ
+    - đúng rồi
+    - có
+    - ok được
+
+- intent: deny
+  examples: |
+    - no
+    - không
+    - từ chối
+    - không có
+    - không cần
+    - khác
+    - không cần đâu
+
+# ============ HEIGHT RELATED INTENTS ============
+- intent: ask_height_problem
+  examples: |
+    - tôi thấp muốn cao thêm
+    - làm sao để cao hơn
+    - cách phát triển chiều cao
+    - tôi 160 cm, muốn 170
+    - con tôi thấp so với bạn
+    - có cách nào để tăng chiều cao không
+    - tôi 25 tuổi còn phát triển được không
+    - làm sao để cao hơn ở tuổi 20
+    - tôi muốn tăng chiều cao
+    - chiều cao của tôi thấp
+
+- intent: ask_about_me
+  examples: |
+    - bạn là ai
+    - bot này làm gì
+    - bạn là bot gì
+    - giới thiệu về bạn
+    - bạn là Unigrow bot
+    - bạn làm việc gì
+
+# ============ UNIGROW PRODUCT INTENTS ============
+- intent: ask_unigrow_info
+  examples: |
+    - Unigrow là gì
+    - Unigrow có tốt không
+    - Unigrow có hiệu quả không
+    - cách dùng Unigrow
+    - giá Unigrow bao nhiêu
+    - Unigrow có tác dụng phụ không
+    - thành phần của Unigrow
+    - ai có thể dùng Unigrow
+    - Unigrow dành cho tuổi nào
+    - Unigrow là sản phẩm gì
+    - Unigrow hoạt động như thế nào
+
+- intent: ask_dosage
+  examples: |
+    - dùng bao nhiêu viên một ngày
+    - cách uống Unigrow
+    - uống lúc nào tốt nhất
+    - uống trước hay sau ăn
+    - dùng lâu dài có được không
+    - liều dùng Unigrow
+    - bao lâu uống 1 lần
+    - cách dùng sao cho hiệu quả
+
+- intent: ask_results
+  examples: |
+    - bao lâu thấy hiệu quả
+    - mấy tháng thấy kết quả
+    - có chắc chắn phát triển không
+    - tôi bao nhiêu tuổi còn phát triển được
+    - dùng bao lâu mới thấy kết quả
+    - hiệu quả của Unigrow
+
+# ============ PRICING & PURCHASE INTENTS ============
+- intent: ask_price
+  examples: |
+    - Unigrow bao nhiêu tiền
+    - giá của Unigrow là bao nhiêu
+    - mua Unigrow bao nhiêu
+    - có khuyến mãi không
+    - mua nhiều có rẻ không
+    - giá mua 1 hộp vs 3 hộp
+    - Unigrow giá bao nhiêu
+
+- intent: ask_purchase
+  examples: |
+    - tôi muốn mua Unigrow
+    - làm sao để mua
+    - bán ở đâu
+    - có trực tuyến không
+    - giao hàng như thế nào
+    - mua hôm nay giao khi nào
+    - tôi muốn đặt hàng
+    - cách mua Unigrow
+
+- intent: ask_guarantee
+  examples: |
+    - có bảo hành không
+    - nếu không hài lòng có hoàn tiền không
+    - bảo hành bao lâu
+    - an toàn không
+    - có chứng chỉ không
+    - Unigrow có an toàn không
+    - đảm bảo chất lượng không
